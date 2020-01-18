@@ -20,5 +20,6 @@ public class Visit {
     @Column(name = "visit_date")
     private LocalDate date;
 
-    private Long page;
+    @Column(name = "page_id")
+    private Long pageId;
 }

@@ -15,18 +15,20 @@ public interface VisitRepository extends CrudRepository<Visit, Long> {
     @Query("SELECT COUNT (DISTINCT visit.visitorId) " +
             "from Visit visit where visit.date = :date")
     Long countVisitorIdDistinctByDate(LocalDate date);
+
     //count visitors in range
     Long countAllByDateBetween(LocalDate dateFrom, LocalDate dateTo);
     @Query("SELECT COUNT (DISTINCT visit.visitorId) " +
             "from Visit visit where visit.date between :dateFrom and :dateTo")
     Long countVisitorIdDistinctInRange(LocalDate dateFrom, LocalDate dateTo);
 
+
     @Query("SELECT visit.visitorId " +
             "from  Visit visit where visit.date between :dateFrom and :dateTo ")
-    Set<Long> countRegularVisitorsInRange(LocalDate dateFrom, LocalDate dateTo);
+    Set<Long> findVisitorIdByDateBetween(LocalDate dateFrom, LocalDate dateTo);
 
-    @Query("SELECT COUNT (DISTINCT visit.page) " +
+    @Query("SELECT COUNT (DISTINCT visit.pageId) " +
             "from  Visit visit " +
             "where (visit.date between :dateFrom and :dateTo) and visit.visitorId = :visitorId")
-    Long countPages(Long visitorId, LocalDate dateFrom, LocalDate dateTo);
+    Long countVisitorPages(Long visitorId, LocalDate dateFrom, LocalDate dateTo);
 }

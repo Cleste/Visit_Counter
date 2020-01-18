@@ -1,7 +1,6 @@
 package com.kirill.pimenov.controllers;
 
 
-import com.kirill.pimenov.domain.Visit;
 import com.kirill.pimenov.services.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -17,6 +16,7 @@ import java.time.LocalDate;
 @Controller
 @RequestMapping("/visit")
 public class VisitController  {
+
     @Autowired
     VisitService visitService;
 
@@ -35,11 +35,11 @@ public class VisitController  {
             @RequestParam Long pageId,
             @RequestParam Long visitorId
     ){
-        return visitService.save(pageId, visitorId);
+        return visitService.save(pageId, visitorId, null);
     }
 
     @PostMapping("/withDate")
-    public ResponseEntity<?> addVisit(
+    public ResponseEntity<?> addVisitWithDate(
             @RequestParam Long pageId,
             @RequestParam Long visitorId,
              @RequestParam("date")

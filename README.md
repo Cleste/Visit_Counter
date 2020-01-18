@@ -11,19 +11,36 @@ spring.datasource.password - password для подключения к БД
 Варианты запросов: 
 
 GET - http://localhost:8080/visit
-    
-    parametrs:
-    dateFrom - YYYY-MM-DD, dateTo - YYYY-MM-DD
-
+```json 
+{
+    "dateFrom" : "YYYY-MM-DD"
+    "dateTo" : "YYYY-MM-DD"
+}
+```
 POST - http://localhost:8080/visit
-
-    parametrs:
-    pageId, visitorId 
-    
+```json 
+{
+    "pageId" : "int8 Id"
+    "visitorId" : "int8 Id"
+}
+``` 
 Для удобства проверки работы приложения так же есть метод:
 
 POST - http://localhost:8080/visit/withDate
+```json 
+{
+    "pageId" : "int8 Id"
+    "visitorId" : "int8 Id"
+    "date" : "YYYY-MM-DD"
+}
+``` 
     
-    parametrs:
-        pageId, visitorId, date - YYYY-MM-DD
-    
+### Инструкция по работе с тестами:	
+	
+- Создайте отдельную базу данных PostgreSQL для тестов.
+- Укажите данные своей БД в файле application-test.properties:
+spring.datasource.url - host вашей БД
+spring.datasource.username - username для подключения к БД
+spring.datasource.password - password для подключения к БД
+- Запустите тесты.
+

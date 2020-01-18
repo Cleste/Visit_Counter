@@ -8,9 +8,6 @@ import java.time.LocalDate;
 
 @Service
 public interface VisitService {
-    Long countAllByDate(LocalDate date);
-
-    ResponseEntity<?> save(Long pageId, Long visitorId);
 
     ResponseEntity<?> save(Long pageId, Long visitorId, LocalDate localDate);
 
